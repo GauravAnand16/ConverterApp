@@ -59,6 +59,10 @@ app.post("/convertFile", upload.single("file"), (req, res, next) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("Hello world!!")
+})
+
 app.post("/convertPdfToDocx", upload.single("file"), async (req, res) => {
   try {
     if (!req.file) {
