@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaFileWord, FaFilePdf } from "react-icons/fa";
 import axios from "axios";
+import { server } from "../constants/config";
 
 function Home() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -23,8 +24,8 @@ function Home() {
     formData.append("file", selectedFile);
     const url =
       conversionType === "wordToPdf"
-        ? "http://localhost:3000/convertFile"
-        : "http://localhost:3000/convertPdfToDocx";
+        ? `${server}/convertFile`
+        : `${server}/convertPdfToDocx`;
 
     try {
       const response = await axios.post(url, formData, { responseType: "blob" });
